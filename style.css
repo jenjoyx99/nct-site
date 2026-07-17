@@ -331,7 +331,8 @@ strong { color: var(--ink); }
   display: flex;
   flex-wrap: wrap;
   gap: 8px 18px;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
 }
 
 /* ---------- Responsive ---------- */
