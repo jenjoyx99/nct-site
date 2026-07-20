@@ -698,12 +698,13 @@ main .wrap > .closing + .closing { margin-top: 14px; }
 .stage-inner {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 32px;
+  grid-template-columns: auto auto auto;
+  gap: 28px;
   align-items: center;
   justify-content: center;
-  max-width: 940px;
+  max-width: 1200px;
 }
+.stage-copy { max-width: 560px; }
 
 .stage-eyebrow {
   font-size: 11.5px;
@@ -724,6 +725,23 @@ main .wrap > .closing + .closing { margin-top: 14px; }
   text-wrap: balance;
 }
 .stage-h1 em { font-style: normal; color: var(--nct-red); }
+
+.stage-figure {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  justify-self: end;
+  order: 3;
+}
+.badge-contract { order: 2; }
+.stage-figure img {
+  display: block;
+  width: 100%;
+  height: auto;            /* natural proportions, no distortion */
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(18, 33, 58, 0.14);
+}
 
 .stage-sub {
   margin-top: 14px;
@@ -823,6 +841,7 @@ main .wrap > .closing + .closing { margin-top: 14px; }
 @media (max-width: 860px) {
   .stage { text-align: center; padding: 34px 0 32px; }
   .stage-inner { grid-template-columns: 1fr; gap: 24px; }
+  .stage-figure { max-width: 340px; margin: 0 auto; justify-self: center; }
   .stage-h1 { max-width: none; margin: 0 auto; }
   .stage-sub { margin-left: auto; margin-right: auto; }
   .stage-actions { justify-content: center; }
