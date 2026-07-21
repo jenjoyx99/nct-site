@@ -294,8 +294,11 @@ strong { color: var(--ink); }
   border-radius: 8px;
   padding: 14px 16px;
   margin-top: 16px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.callout p { margin: 0; text-align: left; }
+.callout p { margin: 0; text-align: center; }
 
 /* ---------- Footer ---------- */
 
@@ -337,7 +340,7 @@ strong { color: var(--ink); }
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 980px) {
+@media (max-width: 760px) {
   .nav-toggle { display: block; }
   .site-nav {
     display: none;
