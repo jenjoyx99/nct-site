@@ -300,6 +300,14 @@ strong { color: var(--ink); }
 }
 .callout p { margin: 0; text-align: center; }
 
+/* ---------- Policy pages: left-aligned body text, centered headings ---------- */
+
+.policy-page main .wrap p,
+.policy-page main .wrap .lede,
+.policy-page main .wrap ul,
+.policy-page main .wrap ol { text-align: left; }
+.policy-page main .wrap .callout p { text-align: center; }
+
 /* ---------- Footer ---------- */
 
 .site-footer {
