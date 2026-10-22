@@ -1,0 +1,53 @@
+# Builds the GSA Products catalog from catalog/ and publishes the site to GitHub Pages.
+# Runs every time you upload/commit to the main branch.
+name: Build and publish site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build catalog data
+        run: |
+          pip install openpyxl
+          SRC=$(ls catalog/*.xlsx catalog/*.xlsm catalog/*.csv catalog/*.zip 2>/dev/null | head -n 1)
+          if [ -n "$SRC" ]; then
+            echo "Building catalog from $SRC"
+            python tools/build_catalog.py "$SRC"
+          else
+            echo "No price list in catalog/ - publishing without product data"
+          fi
+      - name: Collect site files
+        run: |
+          mkdir _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'catalog' --exclude 'tools' ./ _site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
