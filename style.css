@@ -1143,3 +1143,25 @@ main .wrap > .split { margin-top: 8px; }
 }
 .gsa-search button:hover { background: #153f6f; }
 .gsa-search + .badge-cta { border-top: 1px solid var(--line); }
+
+/* --- Hero v2: search on top of card, GSA badge above photo --- */
+.badge-contract { padding-top: 0; }
+.badge-contract .badge-links { border-top: 0; }
+.badge-contract .gsa-search { padding: 20px 4px 18px; }
+.badge-contract .gsa-search-k { font-size: 13px; margin-bottom: 10px; color: var(--ink); }
+.badge-contract .gsa-search-row { gap: 8px; }
+.badge-contract .gsa-search input { font-size: 16px; padding: 13px 14px; border-radius: 8px; border-color: #c5d0dc; }
+.badge-contract .gsa-search button { font-size: 15px; padding: 13px 18px; border-radius: 8px; }
+.stage-figure .figure-gsa {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 6px 22px rgba(18,33,58,0.07); padding: 12px 14px; margin-bottom: 14px;
+}
+.stage-figure .figure-gsa img { display: block; width: 100%; height: auto; border: 0; box-shadow: none; border-radius: 0; }
+.badge-contract { width: 400px; }
+.badge-contract .gsa-search input { padding: 14px 16px; font-size: 17px; }
+.badge-contract .gsa-search button { padding: 14px 20px; flex-shrink: 0; }
+@media (max-width: 1100px) { .badge-contract { width: 360px; } }
+@media (max-width: 860px) {
+  .badge-contract { width: 100%; max-width: 440px; }
+  .stage-figure .figure-gsa { max-width: 260px; margin-left: auto; margin-right: auto; }
+}
