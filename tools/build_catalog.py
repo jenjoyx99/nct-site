@@ -36,10 +36,12 @@ COLS = {
     "itemdescription": "desc",
     "uom": "uom",
     "price": "price",
+    "govtpricewithfee": "price",
+    "defaultphoto": "photo",
     "countryoforigin": "coo",
     "deliverydays": "days",
 }
-FIELDS = ["contract", "mfr", "mpn", "vpn", "sin", "name", "desc", "uom", "price", "coo", "days"]
+FIELDS = ["contract", "mfr", "mpn", "vpn", "sin", "name", "desc", "uom", "price", "coo", "days", "photo"]
 
 
 def norm_header(h):
@@ -110,7 +112,7 @@ def main(src):
                 k = COLS.get(norm_header(h))
                 if k:
                     colmap[k] = i
-            missing = [c for c in ("name", "mpn") if c not in colmap]
+            missing = [c for c in ("name", "mpn", "price") if c not in colmap]
             if missing:
                 sys.exit(f"Missing required column(s): {missing}. Found: {list(header)}")
         rec = {k: clean(row[i]) if i < len(row) else "" for k, i in colmap.items()}
