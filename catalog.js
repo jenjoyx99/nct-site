@@ -120,7 +120,7 @@
       '<div class="pcard-body"><span class="pcard-cat">' + esc(d.mfr) + '</span>' +
       '<span class="pcard-name">' + esc(d.name) + '</span>' +
       '<span class="pcard-part">Mfr # ' + esc(d.mpn) + '</span>' +
-      (d.price ? '<span class="pcard-price">' + esc(d.price) + (d.uom ? ' <small>/ ' + esc(d.uom) + '</small>' : '') + '</span>' : '') +
+      (d.price ? '<span class="pcard-price">' + '$' + esc(d.price) + (d.uom ? ' <small>/ ' + esc(d.uom) + '</small>' : '') + '</span>' : '') +
       '<span class="pcard-cta">Request a quote &rarr;</span></div></a>';
   }
 
@@ -212,7 +212,7 @@
       $("i-cat").textContent = d.mfr;
       $("i-name").textContent = d.name;
       var rows = [
-        ["Price", d.price ? d.price : ""],
+        ["Price", d.price ? "$" + d.price : ""],
         ["Manufacturer", d.mfr],
         ["Mfr part #", d.mpn],
         ["Vendor part #", d.vpn],
