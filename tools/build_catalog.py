@@ -105,6 +105,9 @@ def shard(token):
 def main(src):
     t0 = time.time()
     items, colmap = [], None
+    pdir = os.path.join(os.path.dirname(OUT), "img", "p")
+    photos = set(os.listdir(pdir)) if os.path.isdir(pdir) else set()
+    photo_missing = 0
     for header, row in read_rows(src):
         if colmap is None:
             colmap = {}
@@ -119,6 +122,14 @@ def main(src):
         if not (rec.get("name") or rec.get("mpn")):
             continue  # skip blank lines
         rec["price"] = fmt_price(rec.get("price", ""))
+        ph = rec.get("photo", "")
+        if ph:
+            webp = ph.rsplit(".", 1)[0].lower() + ".webp"
+            if webp in photos:
+                rec["photo"] = webp
+            else:
+                rec["photo"] = ""
+                photo_missing += 1
         items.append([rec.get(f, "") for f in FIELDS])
 
     if os.path.isdir(OUT):
@@ -187,6 +198,8 @@ def main(src):
     files = sum(len(fs) for _, _, fs in os.walk(OUT))
     size = sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(OUT) for f in fs)
     print(f"{len(items):,} items, {len(mfrs):,} manufacturers, {len(sins)} SINs")
+    with_photo = sum(1 for it in items if it[F["photo"]])
+    print(f"{with_photo:,} items with a photo; {photo_missing:,} rows name a photo that is not in img/p")
     print(f"{files:,} files, {size / 1e6:.1f} MB, {time.time() - t0:.1f}s")
 
 

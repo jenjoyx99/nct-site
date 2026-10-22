@@ -116,7 +116,8 @@
 
   function card(d) {
     var link = "products.html?pn=" + encodeURIComponent(d.mpn || d.vpn);
-    return '<a class="pcard" href="' + link + '">' +
+    var img = d.photo ? '<div class="pcard-img"><img src="img/p/' + esc(d.photo) + '" alt="" loading="lazy" onerror="this.parentNode.remove()"></div>' : '';
+    return '<a class="pcard' + (d.photo ? ' has-img' : '') + '" href="' + link + '">' + img +
       '<div class="pcard-body"><span class="pcard-cat">' + esc(d.mfr) + '</span>' +
       '<span class="pcard-name">' + esc(d.name) + '</span>' +
       '<span class="pcard-part">Mfr # ' + esc(d.mpn) + '</span>' +
@@ -208,7 +209,9 @@
       var d = r.filter(function (x) { return x.mpn.toLowerCase() === want; })[0] ||
               r.filter(function (x) { return x.vpn.toLowerCase() === want; })[0] || r[0];
       document.title = d.name + " | " + d.mpn + " | New Century Technologies Inc.";
-      $("i-img").innerHTML = "<span>" + esc(d.mfr || "NCT") + "</span>";
+      $("i-img").innerHTML = d.photo ?
+        '<img src="img/p/' + esc(d.photo) + '" alt="' + esc(d.name) + '" onerror="this.outerHTML=\'<span>' + esc(d.mfr || "NCT").replace(/'/g, "") + '</span>\'">' :
+        "<span>" + esc(d.mfr || "NCT") + "</span>";
       $("i-cat").textContent = d.mfr;
       $("i-name").textContent = d.name;
       var rows = [
