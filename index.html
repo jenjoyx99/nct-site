@@ -22,9 +22,10 @@
       <nav class="site-nav" id="site-nav">
           <a href="index.html" aria-current="page">Home</a>
           <a href="about.html">About</a>
+          <a href="products.html">GSA Products</a>
           <a href="contact.html">Contact Us</a>
           <a href="quote.html">Request a Quote</a>
-          <a class="shop" href="https://www.gsaadvantage.gov/advantage/ws/search/advantage_search?q=0:2GS-21F-0088X&amp;db=0&amp;searchType=1" target="_blank" rel="noopener">Shop</a>
+          <a href="https://cmcengage.com/15855" target="_blank" rel="noopener">IT Shop</a>
       </nav>
     </div>
   </header>
@@ -53,7 +54,13 @@
       <div class="badge-contract">
         <img class="badge-gsa" src="img/gsa-contract.jpg" alt="GSA Contract Holder GS-21F-0088X" />
         <div class="badge-links">
-          <a class="badge-cta" href="https://www.gsaadvantage.gov/advantage/ws/search/advantage_search?q=0:2GS-21F-0088X&amp;db=0&amp;searchType=1" target="_blank" rel="noopener">Shop on GSA Advantage &rarr;</a>
+          <form class="gsa-search" id="gsa-search" role="search" action="products.html" method="get">
+            <label class="gsa-search-k" for="gsa-q">Search our GSA products</label>
+            <div class="gsa-search-row">
+              <input id="gsa-q" name="q" type="search" placeholder="e.g. toner, chair, CF226A" autocomplete="off" />
+              <button type="submit">Search</button>
+            </div>
+          </form>
         </div>
         <div class="badge-alt">
           <span class="badge-alt-k">Also available on</span>
@@ -194,6 +201,17 @@
         t.setAttribute("aria-expanded", String(open));
       });
     }
+  </script>
+  <script>
+    /* Homepage search box: searches our own GSA Products catalog. */
+    (function () {
+      var f = document.getElementById("gsa-search");
+      if (f) f.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var q = document.getElementById("gsa-q").value.trim();
+        location.href = "products.html" + (q ? "?q=" + encodeURIComponent(q) : "");
+      });
+    })();
   </script>
 </body>
 </html>

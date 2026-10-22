@@ -740,7 +740,7 @@ main .wrap > .closing + .closing { margin-top: 14px; }
 .stage-figure {
   position: relative;
   width: 100%;
-  max-width: 300px;
+  max-width: 240px;
   justify-self: end;
   order: 3;
 }
@@ -779,7 +779,7 @@ main .wrap > .closing + .closing { margin-top: 14px; }
   flex-direction: column;
   align-items: center;
   margin: 0;
-  width: 290px;
+  width: 340px;
   padding: 18px 18px 0;
   background: var(--paper);
   border: 1px solid var(--line);
@@ -856,7 +856,7 @@ main .wrap > .closing + .closing { margin-top: 14px; }
   .stage-h1 { max-width: none; margin: 0 auto; }
   .stage-sub { margin-left: auto; margin-right: auto; }
   .stage-actions { justify-content: center; }
-  .badge-contract { max-width: 340px; margin: 0 auto; }
+  .badge-contract { max-width: 400px; width: 100%; margin: 0 auto; }
 }
 
 /* ================= HOME: proof bar ================= */
@@ -1126,3 +1126,20 @@ main .wrap > .split { margin-top: 8px; }
   .frow { grid-template-columns: 1fr; }
   .frow .field + .field { margin-top: 14px; }
 }
+/* --- GSA product search (homepage card) --- */
+.gsa-search { padding: 12px 12px 10px; text-align: left; }
+.gsa-search-k {
+  display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px;
+}
+.gsa-search-row { display: flex; gap: 6px; }
+.gsa-search input {
+  flex: 1; min-width: 0; font: inherit; font-size: 14px; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; background: #fff;
+}
+.gsa-search button {
+  font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+  background: var(--gov-blue); color: #fff; border: 0; border-radius: 6px; padding: 8px 12px;
+}
+.gsa-search button:hover { background: #153f6f; }
+.gsa-search + .badge-cta { border-top: 1px solid var(--line); }
