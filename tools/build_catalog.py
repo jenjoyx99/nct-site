@@ -179,7 +179,24 @@ def main(src):
     for k, d in pn.items():
         dump(f"p/{k}.json", {pn_: (ids[0] if len(ids) == 1 else ids) for pn_, ids in d.items()})
 
+    featured = []
+    fpath = os.path.join(os.path.dirname(OUT), "catalog", "featured.txt")
+    if os.path.isfile(fpath):
+        by_mpn = {}
+        for n, it in enumerate(items):
+            by_mpn.setdefault(it[F["mpn"]].strip().lower(), n)
+        for line in open(fpath, encoding="utf-8"):
+            pn_ = line.strip()
+            if not pn_ or pn_.startswith("#"):
+                continue
+            n = by_mpn.get(pn_.lower())
+            if n is None:
+                print(f"WARNING: featured part number not found: {pn_}")
+            else:
+                featured.append(n)
+
     dump("meta.json", {
+        "featured": featured,
         "count": len(items),
         "chunk": CHUNK,
         "fields": FIELDS,

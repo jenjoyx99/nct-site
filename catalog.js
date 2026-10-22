@@ -145,6 +145,11 @@
     writeUrl();
     $("clear").hidden = !(state.q || state.mfr || state.sin);
     var mi = mfrIndex(state.mfr);
+    var showFeat = !state.q && !state.mfr && !state.sin && state.page === 1 && META.featured && META.featured.length;
+    $("featured").hidden = !showFeat;
+    if (showFeat && !$("featured-grid").childElementCount) {
+      items(META.featured).then(function (rows) { $("featured-grid").innerHTML = rows.map(card).join(""); });
+    }
     $("count").textContent = "Searching…";
     var find = mi === -2 ? Promise.resolve([]) : search(state.q, mi, state.sin);
     find.then(function (ids) {

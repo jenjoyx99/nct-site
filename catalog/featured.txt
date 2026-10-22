@@ -1,0 +1,8 @@
+# Featured products on the GSA Products page.
+# One manufacturer part number per line, in the order to show them.
+# Lines starting with # are ignored. Items need a photo to look their best.
+447261-01
+CBM-815WS
+MLNC1BB2OJT
+PEHUMPRO
+RM81C-1000NW
