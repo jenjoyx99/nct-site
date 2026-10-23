@@ -205,7 +205,12 @@
     (function () {
       var item = new URLSearchParams(location.search).get("item");
       var box = document.getElementById("items");
-      if (item && box && !box.value) box.value = item + " \u2014 qty ";
+      if (item && box && !box.value) {
+        box.value = item.replace(/\s+$/, "") + "\nQTY: ";
+        box.rows = Math.max(box.rows, 6);
+        box.focus();
+        box.setSelectionRange(box.value.length, box.value.length);
+      }
     })();
   </script>
 </body>

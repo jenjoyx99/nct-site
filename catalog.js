@@ -234,7 +234,8 @@
         return "<dt>" + r[0] + "</dt><dd" + (r[0] === "Price" ? ' class="price"' : "") + ">" + esc(r[1]) + "</dd>";
       }).join("");
       $("i-desc").textContent = d.desc && d.desc !== d.name ? d.desc : "";
-      $("i-quote").href = "quote.html?item=" + encodeURIComponent(d.mfr + " " + d.mpn + " — " + d.name);
+      $("i-quote").href = "quote.html?item=" + encodeURIComponent(
+        d.name + "\nManufacturer: " + d.mfr + "\nMfr part #: " + d.mpn + "\n");
     }).catch(function () {
       $("i-name").textContent = "Product not found";
       $("i-desc").innerHTML = 'This part number isn&rsquo;t in our online catalog. We may still be able to source it &mdash; <a href="quote.html?item=' + encodeURIComponent(pn) + '">request a quote</a>.';
