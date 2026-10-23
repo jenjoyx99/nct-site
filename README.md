@@ -11,5 +11,5 @@ Static site (HTML/CSS/JS) hosted on GitHub Pages. Quote form submits through For
 ## Test on your computer
     python tools/build_catalog.py catalog/<your price list file>
     python -m http.server 8000
-Then open http://localhost:8000/products.html
+Then open http://localhost:8000/gsaproducts.html
 (pip install openpyxl first if the price list is .xlsx)

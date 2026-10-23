@@ -22,7 +22,7 @@
       <nav class="site-nav" id="site-nav">
           <a href="index.html" aria-current="page">Home</a>
           <a href="about.html">About</a>
-          <a href="products.html">GSA Products</a>
+          <a href="gsaproducts.html">GSA Products</a>
           <a href="contact.html">Contact Us</a>
           <a href="quote.html">Request a Quote</a>
           <a href="https://cmcengage.com/15855" target="_blank" rel="noopener">IT Shop</a>
@@ -54,7 +54,7 @@
 
       <div class="badge-contract">
         <div class="badge-links">
-          <form class="gsa-search" id="gsa-search" role="search" action="products.html" method="get">
+          <form class="gsa-search" id="gsa-search" role="search" action="gsaproducts.html" method="get">
             <label class="gsa-search-k" for="gsa-q">Search our GSA products</label>
             <div class="gsa-search-row">
               <input id="gsa-q" name="q" type="search" placeholder="vacuum, chair, brand, part #..." autocomplete="off" />
@@ -209,7 +209,7 @@
       if (f) f.addEventListener("submit", function (e) {
         e.preventDefault();
         var q = document.getElementById("gsa-q").value.trim();
-        location.href = "products.html" + (q ? "?q=" + encodeURIComponent(q) : "");
+        location.href = "gsaproducts.html" + (q ? "?q=" + encodeURIComponent(q) : "");
       });
     })();
   </script>

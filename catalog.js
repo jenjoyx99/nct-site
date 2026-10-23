@@ -115,7 +115,7 @@
   }
 
   function card(d) {
-    var link = "products.html?pn=" + encodeURIComponent(d.mpn || d.vpn);
+    var link = "gsaproducts.html?pn=" + encodeURIComponent(d.mpn || d.vpn);
     var img = d.photo ? '<div class="pcard-img"><img src="img/p/' + esc(d.photo) + '" alt="" loading="lazy" onerror="this.parentNode.remove()"></div>' : '';
     return '<a class="pcard' + (d.photo ? ' has-img' : '') + '" href="' + link + '">' + img +
       '<div class="pcard-body"><span class="pcard-cat">' + esc(d.mfr) + '</span>' +
@@ -250,7 +250,7 @@
   }).catch(function () {
     $("count").textContent = "";
     $("grid").innerHTML = location.protocol === "file:" ?
-      '<p class="empty">The catalog needs a web server to load. Run <code>python -m http.server 8000</code> in the site folder and open http://localhost:8000/products.html</p>' :
+      '<p class="empty">The catalog needs a web server to load. Run <code>python -m http.server 8000</code> in the site folder and open http://localhost:8000/gsaproducts.html</p>' :
       '<p class="empty">The catalog is being updated. Please check back shortly or <a href="quote.html">request a quote</a>.</p>';
   });
 })();
